@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.summary      = "A Helix project"
   s.files        = Dir['{lib/**/*,[A-Z]*}']
 
-  s.platform     = Gem::Platform::RUBY
+  s.platform     = Gem::Platform.local
   s.require_path = 'lib'
 
   s.add_dependency 'helix_runtime', '~> 0.6.1'

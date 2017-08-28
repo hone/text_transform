@@ -1,0 +1,38 @@
+environment:
+  nodejs_version: 8
+  rust_channel: stable
+  matrix:
+    - platform: x64
+      rust_target: x86_64-pc-windows-msvc
+      ruby_version: 22-x64
+    - platform: x86
+      rust_target: i686-pc-windows-msvc
+      ruby_version: 22
+
+os: Visual Studio 2015
+
+install:
+  - appveyor DownloadFile https://win.rustup.rs/ -FileName rustup-init.exe
+  - rustup-init -yv --default-toolchain %rust_channel% --default-host %rust_target%
+  - set PATH=%PATH%;%USERPROFILE%\.cargo\bin
+  - set PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%
+  - bundle install --path vendor/bundle
+
+build: false
+
+before_test:
+  - rustc -vV
+  - cargo -vV
+  - ruby -v
+  - gem -v
+  - bundle -v
+
+test_script:
+  - bundle exec rake
+
+after_test:
+  - gem build text_transform.gemspec
+
+artifacts:
+  - name: binary
+    path: text_transform-*.gem

@@ -1,0 +1,29 @@
+---
+version: 2
+jobs:
+  build:
+    docker:
+      - image: daald/ubuntu32:trusty
+    working_directory: ~/helix
+    steps:
+      - run: apt-get update && apt-get install -y curl build-essential git software-properties-common
+      - checkout
+      - run: apt-add-repository ppa:brightbox/ruby-ng
+      - run: apt-get update
+      - run: apt-get install ruby2.2 ruby2.2-dev -y
+      - run: gem install bundler
+      - run: curl https://sh.rustup.rs -sSf | sh -s -- -y
+      - run: $HOME/.cargo/bin/rustup toolchain install stable-i686-unknown-linux-gnu
+      - run: $HOME/.cargo/bin/rustup default stable-i686-unknown-linux-gnu
+      - run: echo 'export PATH=$HOME/.cargo/bin:$PATH' >> $BASH_ENV
+      - run: bundle install --path vendor/bundle
+      - run: bundle exec rake
+      - run: ./bin/publish_to_rubygems.sh
+workflows:
+  version: 2
+  build-workflow:
+    jobs:
+      - build:
+          filters:
+            tags:
+              ignore: /^testing/

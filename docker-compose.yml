@@ -1,0 +1,7 @@
+version: '3'
+services:
+  bash:
+    build: .
+    command: bash
+    volumes:
+      - .:/root/code

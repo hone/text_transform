@@ -39,7 +39,7 @@ test_script:
   - bundle exec rake
 
 after_test:
-  - ruby ./bin/publish_to_rubygems.rb %APPVEYOR_REPO_TAG_NAME%
+  - ruby ./.scripts/publish_to_rubygems.rb %APPVEYOR_REPO_TAG_NAME%
 
 artifacts:
   - name: binary

@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.authors      = ['Godfrey Chan', 'Terence Lee']
   s.email        = 'hone02@gmail.com'
   s.summary      = "Transform text using the power of helix/rust"
-  s.files        = Dir['{lib/**/*,[A-Z]*}']
+  s.files        = Dir['{lib/**/*,[A-Z]*}'] - Dir['Cargo.*']
 
   s.platform     = Gem::Platform.local
   s.require_path = 'lib'

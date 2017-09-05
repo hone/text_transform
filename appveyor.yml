@@ -1,4 +1,6 @@
 environment:
+  rubygems_auth_token:
+    secure: 93TaZT1qqtabbet6M7JxYk+d23X18xCmecYHo+qeHgVPlYPnk4PQBzNTiNpmqrrm
   nodejs_version: 8
   rust_channel: stable
   matrix:

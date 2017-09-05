@@ -2,9 +2,10 @@ require 'fileutils'
 
 puts `gem build text_transform.gemspec`
 
-puts ARGV[0] if ARGV[0]
+git_tag = ARGV[0]
+puts git_tag if git_tag
 
-if ARGV[0].match(/^v[0-9.]+/)
+if git_tag && git_tag.match(/^v[0-9.]+/)
   gem_config_dir = "#{Dir.home}/.gem"
   credentials_file = "#{gem_config_dir}/credentials"
 

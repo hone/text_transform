@@ -38,7 +38,7 @@ script:
 
 after_success:
 # if publishing, do it
-- ./bin/publish_to_rubygems.sh
+- ruby ./bin/publish_to_rubygems.rb $TRAVIS_TAG
 
 matrix:
   include:

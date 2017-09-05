@@ -1,5 +1,5 @@
 require 'helix_runtime/build_task'
 
-HelixRuntime::BuildTask.new("text_transform")
+HelixRuntime::BuildTask.new
 
 task :default => :build

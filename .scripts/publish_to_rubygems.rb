@@ -3,7 +3,6 @@ require 'fileutils'
 puts `gem build text_transform.gemspec`
 
 git_tag = ARGV[0]
-puts git_tag if git_tag
 
 if git_tag && git_tag.match(/^v[0-9.]+/)
   require 'yaml'

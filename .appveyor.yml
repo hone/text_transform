@@ -20,7 +20,6 @@ install:
   - set PATH=%PATH%;%USERPROFILE%\.cargo\bin
   - set PATH=C:\Ruby%RUBY_VERSION%\bin;C:\Ruby%RUBY_VERSION%\DevKit\bin;%PATH%
   - bundle install --path vendor/bundle
-  - ruby -e "puts RbConfig::CONFIG[\'bindir\']"
   - bundle exec rake helix:copy_dll
 
 build: false
